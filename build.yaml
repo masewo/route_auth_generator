@@ -1,0 +1,14 @@
+targets:
+  $default:
+    builders:
+      route_auth_generator:
+        enabled: true
+
+builders:
+  route_auth:
+    import: "package:route_auth_generator/builder.dart"
+    builder_factories: [ "routeAuth" ]
+    build_extensions: { ".dart": [ ".route_auth.g.dart" ] }
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: [ "source_gen|combining_builder" ]
